@@ -1,11 +1,10 @@
 import { json } from "@sveltejs/kit";
 
 export async function POST({ request }) {
-  const calculate = await request.json();
+  const data = await request.json();
 
-  console.log(calculate.data);
 
-  return json({ data: evaluateExpression(calculate.data) });
+  return json({ output: evaluateExpression(data.input) });
 }
 
 // Helper function to determine operator precedence
@@ -61,7 +60,7 @@ function evaluatePostfix(postfixExpression: string[]): number {
 
   for (const token of postfixExpression) {
     if (!isNaN(Number(token))) {
-      stack.push(parseFloat(token));
+      stack.push(Number(token));
     } else {
       const b = stack.pop()!;
       const a = stack.pop()!;

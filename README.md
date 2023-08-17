@@ -3,7 +3,6 @@ This is a simple exam to build a simple Calculator.
 Preview App : https://svelte-calculator-theta.vercel.app/
 
 - Create a simple calculator app using SvelteKit https://kit.svelte.dev/
-- Submit it to github.
 - The calculator app should have buttons for entering numbers.
 - Condition:
   (1) Don't use eval() or Function() or mathjs or any computation library

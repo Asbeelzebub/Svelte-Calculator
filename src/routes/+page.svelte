@@ -12,7 +12,7 @@
       }),
     });
     const data = await request.json();
-    result = data.data;
+    result = data.output;
   }
 
   function addToInput(value: string) {

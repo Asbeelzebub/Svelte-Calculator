@@ -1,21 +1,15 @@
 <script lang="ts">
   let currentInput = "";
-  let expression = "";
   let result = "";
 
   async function submitHandler() {
-    // const data = new FormData(event.target as HTMLFormElement);
-    // const my_input = data.get("my_input") as string;
-    // console.log(my_input);
+
 
     const request = await fetch("/api/calculate", {
       method: "POST",
       body: JSON.stringify({
-        data: currentInput,
+        input: currentInput,
       }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
     });
     const data = await request.json();
     result = data.data;
@@ -23,19 +17,10 @@
 
   function addToInput(value: string) {
     currentInput += value;
-    expression += value;
-  }
-
-  function addDecimal() {
-    if (!currentInput.includes(".")) {
-      currentInput += ".";
-      expression += ".";
-    }
   }
 
   function clearInput() {
     currentInput = "";
-    expression = "";
     result = "";
   }
 </script>
@@ -52,24 +37,27 @@
       <button on:click={() => addToInput("9")}>9</button>
       <button class="operator" on:click={() => addToInput("+")}>+</button>
     </div>
+
     <div class="button-container">
       <button on:click={() => addToInput("4")}>4</button>
       <button on:click={() => addToInput("5")}>5</button>
       <button on:click={() => addToInput("6")}>6</button>
       <button class="operator" on:click={() => addToInput("-")}>-</button>
     </div>
+
     <div class="button-container">
       <button on:click={() => addToInput("1")}>1</button>
       <button on:click={() => addToInput("2")}>2</button>
       <button on:click={() => addToInput("3")}>3</button>
       <button class="operator" on:click={() => addToInput("*")}>*</button>
     </div>
+
     <div class="button-container">
       <button on:click={() => addToInput("0")}>0</button>
-      <button on:click={() => addDecimal()}>.</button>
       <button on:click={clearInput}>C</button>
       <button class="operator" on:click={() => addToInput("/")}>/</button>
     </div>
+
     <button class="equal" on:click={submitHandler}>=</button>
   </div>
 </main>

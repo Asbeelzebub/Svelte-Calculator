@@ -13,4 +13,3 @@ Preview App : https://svelte-calculator-theta.vercel.app/
   (4) Get the result using Rest API and display the result in the UI.
   (5) Deadline this friday
 
-- Explain the details of the code
